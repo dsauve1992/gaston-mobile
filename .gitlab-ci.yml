@@ -7,7 +7,7 @@ stages:
 - lint
 
 install:
-  script: "yarn install"
+  script: "npm install"
   stage : install
   cache:
     key: ${CI_COMMIT_REF_SLUG}
@@ -15,9 +15,9 @@ install:
     - node_modules/
 
 unit-tests:
-  script: "CI=true yarn test"
+  script: "CI=true npm run test"
   stage : tests
 
 lint:
-  script: "yarn run lint:ci"
+  script: "npm run lint:ci"
   stage : lint
