@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import {Button, TextInput, Title} from 'react-native-paper';
-import {displayName as appName} from '../../../../../../app.json';
+import {displayName as appName} from '../../../../../../../app.json';
 import UserRegistrationUseCase from '../../../../usecases/UserRegistrationUseCase';
 import UserRegistrationInfo from '../../../../infrastructure/model/UserRegistrationInfo';
 import {StackNavigationProp} from '@react-navigation/stack/lib/typescript/src/types';

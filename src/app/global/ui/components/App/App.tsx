@@ -5,6 +5,7 @@ import {Provider as PaperProvider} from 'react-native-paper';
 import store from '../../../adapters/store';
 import IsApplicationReadySwitchNavigator from '../../navigation/NavigatorSwitch/NavigatorSwitch';
 import {NavigationContainer} from '@react-navigation/native';
+import theme from '../../theme/theme';
 
 class App extends React.PureComponent<{}> {
   constructor(props: Readonly<{}>) {
@@ -14,7 +15,7 @@ class App extends React.PureComponent<{}> {
   render() {
     return (
       <ReduxProvider store={store}>
-        <PaperProvider>
+        <PaperProvider theme={theme}>
           <NavigationContainer>
             <IsApplicationReadySwitchNavigator />
           </NavigationContainer>

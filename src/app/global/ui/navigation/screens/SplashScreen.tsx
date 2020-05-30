@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 import * as React from 'react';
 
-import {displayName as appName} from '../../../../../app.json';
+import {displayName as appName} from '../../../../../../app.json';
 import theme from '../../theme/theme';
 import {Subheading, Title} from 'react-native-paper';
 

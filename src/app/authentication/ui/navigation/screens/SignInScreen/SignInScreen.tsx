@@ -3,23 +3,17 @@ import {SafeAreaView, StyleSheet} from 'react-native';
 import {Button, TextInput, Title} from 'react-native-paper';
 import EmailPasswordCredential from '../../../../infrastructure/model/EmailPasswordCredential';
 import UserSignInUseCase from '../../../../usecases/UserSignInUseCase';
-import {displayName as appName} from '../../../../../../app.json';
+import {displayName as appName} from '../../../../../../../app.json';
 import {StackNavigationProp} from '@react-navigation/stack/lib/typescript/src/types';
-import {RouteProp} from '@react-navigation/native';
 import {RootStackParamList, ScreenName} from '../../RootStackParams';
 
-type ProfileScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  ScreenName.SIGN_IN_SCREEN
->;
-type ProfileScreenRouteProp = RouteProp<
+export type ProfileScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   ScreenName.SIGN_IN_SCREEN
 >;
 
 type Props = {
   navigation: ProfileScreenNavigationProp;
-  route: ProfileScreenRouteProp;
 };
 
 const SignInScreen: React.FunctionComponent<Props> = ({navigation}) => {
@@ -31,18 +25,18 @@ const SignInScreen: React.FunctionComponent<Props> = ({navigation}) => {
     userSignInUseCase.signIn(new EmailPasswordCredential(email, password));
   };
 
-  console.log('render SignInScreen');
-
   return (
     <SafeAreaView style={styles.root}>
       <Title style={styles.title}>{appName}</Title>
       <TextInput
+        testID="email-input"
         label="Email"
         style={styles.input}
         value={email}
         onChangeText={(value) => setEmail(value)}
       />
       <TextInput
+        testID="password-input"
         label="Password"
         style={styles.input}
         secureTextEntry
@@ -50,19 +44,25 @@ const SignInScreen: React.FunctionComponent<Props> = ({navigation}) => {
         onChangeText={(value) => setPassword(value)}
       />
       <Button
+        testID="forgot-password-button"
         style={styles.forgotPasswordButton}
         uppercase={false}
-        onPress={() => navigation.push(ScreenName.FORGOT_PASSWORD_SCREEN)}>
+        onPress={() => {
+          console.log('hello');
+          navigation.push(ScreenName.FORGOT_PASSWORD_SCREEN);
+        }}>
         Forgot password ?
       </Button>
 
       <Button
+        testID="sign-in-button"
         style={styles.bigButton}
         mode="contained"
         onPress={() => handleSubmit()}>
         Sign in
       </Button>
       <Button
+        testID="sign-up-button"
         style={styles.bigButton}
         onPress={() => navigation.push(ScreenName.SIGN_UP_SCREEN)}>
         Sign up

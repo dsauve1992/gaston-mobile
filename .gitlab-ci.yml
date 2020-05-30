@@ -1,8 +1,10 @@
+default:
+  image: node:12.14.0
+
 stages:
 - install
 - tests
 - lint
-
 
 install:
   script: "yarn install"
@@ -15,7 +17,7 @@ install:
 unit-tests:
   script: "CI=true yarn test"
   stage : tests
-  
+
 lint:
   script: "yarn run lint:ci"
   stage : lint
