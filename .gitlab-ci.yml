@@ -1,0 +1,21 @@
+stages:
+- install
+- tests
+- lint
+
+
+install:
+  script: "yarn install"
+  stage : install
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+    - node_modules/
+
+unit-tests:
+  script: "CI=true yarn test"
+  stage : tests
+  
+lint:
+  script: "yarn run lint:ci"
+  stage : lint
