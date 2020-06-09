@@ -6,26 +6,19 @@ import UserRegistrationUseCase from '../../../../usecases/UserRegistrationUseCas
 import UserRegistrationInfo from '../../../../infrastructure/model/UserRegistrationInfo';
 import {StackNavigationProp} from '@react-navigation/stack/lib/typescript/src/types';
 import {RootStackParamList, ScreenName} from '../../RootStackParams';
-import {RouteProp} from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 type ProfileScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   ScreenName.SIGN_UP_SCREEN
 >;
-type ProfileScreenRouteProp = RouteProp<
-  RootStackParamList,
-  ScreenName.SIGN_UP_SCREEN
->;
 
-type Props = {
-  navigation: ProfileScreenNavigationProp;
-  route: ProfileScreenRouteProp;
-};
-
-const SignUpScreen: React.FunctionComponent<Props> = ({navigation}) => {
+const SignUpScreen: React.FunctionComponent<{}> = () => {
   const [username, setUsername] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+
+  const navigation = useNavigation<ProfileScreenNavigationProp>();
   const userRegistrationUseCase = new UserRegistrationUseCase();
 
   const handleSubmit = (): void => {
@@ -41,7 +34,7 @@ const SignUpScreen: React.FunctionComponent<Props> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={styles.root}>
+    <SafeAreaView style={styles.root} testID="sign-up-screen">
       <Title style={styles.title}>{appName}</Title>
       <TextInput
         label="User Name"
@@ -60,7 +53,9 @@ const SignUpScreen: React.FunctionComponent<Props> = ({navigation}) => {
         style={styles.input}
         secureTextEntry
         value={password}
-        onChangeText={(value) => setPassword(value)}
+        onChangeText={(value: React.SetStateAction<string>) =>
+          setPassword(value)
+        }
       />
 
       <Button
@@ -68,6 +63,14 @@ const SignUpScreen: React.FunctionComponent<Props> = ({navigation}) => {
         mode="contained"
         onPress={() => handleSubmit()}>
         Register
+      </Button>
+      <Button
+        style={styles.alreadyHaveAnAccountButton}
+        uppercase={false}
+        onPress={() => {
+          navigation.push(ScreenName.SIGN_IN_SCREEN);
+        }}>
+        Already have an account ? Sign in
       </Button>
     </SafeAreaView>
   );
@@ -88,6 +91,9 @@ const styles = StyleSheet.create({
   bigButton: {
     marginTop: '5%',
     padding: '3%',
+  },
+  alreadyHaveAnAccountButton: {
+    marginBottom: '5%',
   },
   input: {
     marginTop: '5%',

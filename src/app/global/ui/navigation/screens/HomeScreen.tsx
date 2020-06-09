@@ -15,6 +15,15 @@ const HomeScreen: React.FunctionComponent<Props> = ({currentUser}: Props) => {
 
   return (
     <View style={styles.root}>
+      <Button
+        mode="contained"
+        icon="plus"
+        onPress={() => {
+          console.warn('hello world');
+        }}>
+        New Workout
+      </Button>
+
       <Text style={styles.text}>Welcome {currentUser.displayName}</Text>
       <Button onPress={() => handleDisconnect()}>Disconnect</Button>
     </View>

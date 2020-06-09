@@ -1,5 +1,5 @@
 {
-  "name": "GastonMobile",
+  "name": "pinkie",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -37,7 +37,7 @@
     "@babel/runtime": "^7.6.2",
     "@react-native-community/eslint-config": "^1.0.0",
     "@reactivex/rxjs": "^6.5.5",
-    "@testing-library/react-native": "^5.0.3",
+    "@testing-library/jest-native": "^3.1.0",
     "@types/jest": "^24.0.24",
     "@types/react-native": "^0.62.0",
     "@types/react-redux": "^7.1.8",
@@ -49,26 +49,12 @@
     "husky": "^4.2.5",
     "jest": "^24.9.0",
     "jest-cli": "^26.0.1",
+    "jest-transform-stub": "^2.0.0",
     "metro-react-native-babel-preset": "^0.58.0",
     "prettier": "^2.0.4",
+    "react-native-testing-library": "^2.0.1",
     "react-test-renderer": "16.11.0",
     "typescript": "^3.8.3"
-  },
-  "jest": {
-    "preset": "react-native",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "moduleDirectories": [
-      "node_modules",
-      "./src/test-utils"
-    ],
-    "setupFilesAfterEnv": []
   },
   "husky": {
     "hooks": {

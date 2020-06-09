@@ -5,32 +5,32 @@ import {RootStackParamList, ScreenName} from '../RootStackParams';
 import SignUpScreen from '../screens/SignUpScreen/SignUpScreen';
 import ForgotPasswordScreen from '../screens/ForgotPasswordScreen/ForgotPasswordScreen';
 
-const Stack = createStackNavigator<RootStackParamList>();
+const {Navigator, Screen} = createStackNavigator<RootStackParamList>();
 
 const AuthenticationNavigator: React.FunctionComponent = () => (
-  <Stack.Navigator>
-    <Stack.Screen
+  <Navigator>
+    <Screen
       options={{
         headerShown: false,
       }}
       name={ScreenName.SIGN_IN_SCREEN}
       component={SignInScreen}
     />
-    <Stack.Screen
+    <Screen
       options={{
         headerShown: false,
       }}
       name={ScreenName.SIGN_UP_SCREEN}
       component={SignUpScreen}
     />
-    <Stack.Screen
+    <Screen
       options={{
         headerShown: false,
       }}
       name={ScreenName.FORGOT_PASSWORD_SCREEN}
       component={ForgotPasswordScreen}
     />
-  </Stack.Navigator>
+  </Navigator>
 );
 
 export default AuthenticationNavigator;

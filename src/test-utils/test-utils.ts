@@ -1,16 +1,15 @@
 import React from 'react';
-import {render, queries, RenderOptions} from '@testing-library/react-native';
+import {render, RenderOptions} from 'react-native-testing-library';
 import AllTheProviders from './AllTheProviders';
 
 const customRender = (ui: React.ReactElement, options?: RenderOptions) =>
   render(ui, {
     wrapper: AllTheProviders,
-    queries,
     ...options,
   });
 
 // re-export everything
-export * from '@testing-library/react-native';
+export * from 'react-native-testing-library';
 
 // override render method
 export {customRender as render};

@@ -4,7 +4,7 @@ import {Title} from 'react-native-paper';
 
 const ForgotPasswordScreen: React.FunctionComponent = () => {
   return (
-    <SafeAreaView style={styles.root}>
+    <SafeAreaView style={styles.root} testID="forgot-password-screen">
       <Title style={styles.title}>Forgot password screen</Title>
     </SafeAreaView>
   );

@@ -5,5 +5,8 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   rules: {
     'semi' : "off"
-  }
+  },
+  ignorePatterns: [
+    './src/test-utils/setupFile.js'
+  ],
 };

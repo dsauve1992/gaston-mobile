@@ -6,19 +6,17 @@ import UserSignInUseCase from '../../../../usecases/UserSignInUseCase';
 import {displayName as appName} from '../../../../../../../app.json';
 import {StackNavigationProp} from '@react-navigation/stack/lib/typescript/src/types';
 import {RootStackParamList, ScreenName} from '../../RootStackParams';
+import {useNavigation} from '@react-navigation/native';
 
 export type ProfileScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   ScreenName.SIGN_IN_SCREEN
 >;
 
-type Props = {
-  navigation: ProfileScreenNavigationProp;
-};
-
-const SignInScreen: React.FunctionComponent<Props> = ({navigation}) => {
+const SignInScreen: React.FunctionComponent<{}> = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const navigation = useNavigation<ProfileScreenNavigationProp>();
   const userSignInUseCase = new UserSignInUseCase();
 
   const handleSubmit = (): void => {
@@ -26,7 +24,7 @@ const SignInScreen: React.FunctionComponent<Props> = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={styles.root}>
+    <SafeAreaView style={styles.root} testID="sign-in-screen">
       <Title style={styles.title}>{appName}</Title>
       <TextInput
         testID="email-input"
@@ -47,10 +45,7 @@ const SignInScreen: React.FunctionComponent<Props> = ({navigation}) => {
         testID="forgot-password-button"
         style={styles.forgotPasswordButton}
         uppercase={false}
-        onPress={() => {
-          console.log('hello');
-          navigation.push(ScreenName.FORGOT_PASSWORD_SCREEN);
-        }}>
+        onPress={() => navigation.push(ScreenName.FORGOT_PASSWORD_SCREEN)}>
         Forgot password ?
       </Button>
 
